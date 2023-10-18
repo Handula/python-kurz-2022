@@ -14,17 +14,33 @@ sklad = {
 Pokud zadaná součástka na skladě je, ale je jí méně, než požaduje zákazník, vypiš text o tom, že lze prodat pouze omezené množství kusů. Následně součástku odeber ze slovníku, protože je vyprodaná.
 Pokud zadaná součástka na skladě je a je jí dostatek, vypiš informaci, že poptávku lze uspokojit v plné výši, a sniž počet součástek na skladě o množství požadované zákazníkem. """
 
+""" kod_soucastky = str(input("Zadej kod soucastky:"))
+
+if kod_soucastky in sklad:
+    pozadovane_mnozstvi = int(input('Zadej pozadovane mnozstvi: '))
+    mnozstvi_na_sklade = sklad[kod_soucastky]
+    if mnozstvi_na_sklade <= pozadovane_mnozstvi:
+        print("Lze prodat pouze omezeny pocet kusu")
+        del sklad[kod_soucastky]
+    if mnozstvi_na_sklade >= pozadovane_mnozstvi:
+        print("Poptavku lze uspokojit v plne vysi")
+        sklad[kod_soucastky] = (mnozstvi_na_sklade)-(pozadovane_mnozstvi)
+else:
+    print("Poptavku bohuzel nelze uspokojit")
+
+print(sklad) """
+
 kod_soucastky = str(input("Zadej kod soucastky:"))
 
 if kod_soucastky in sklad:
     pozadovane_mnozstvi = int(input('Zadej pozadovane mnozstvi: '))
     mnozstvi_na_sklade = sklad[kod_soucastky]
-    if mnozstvi_na_sklade < pozadovane_mnozstvi:
+    if mnozstvi_na_sklade <= pozadovane_mnozstvi:
         print("Lze prodat pouze omezeny pocet kusu")
-        del sklad[kod_soucastky]
-    if mnozstvi_na_sklade > pozadovane_mnozstvi:
+        sklad.pop(kod_soucastky)
+    if mnozstvi_na_sklade >= pozadovane_mnozstvi:
         print("Poptavku lze uspokojit v plne vysi")
-        sklad[kod_soucastky] = (mnozstvi_na_sklade)-(pozadovane_mnozstvi)
+        sklad[kod_soucastky] = mnozstvi_na_sklade-pozadovane_mnozstvi
 else:
     print("Poptavku bohuzel nelze uspokojit")
 
